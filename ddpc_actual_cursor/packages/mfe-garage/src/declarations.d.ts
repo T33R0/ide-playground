@@ -1,0 +1,2 @@
+
+declare module "host/eventBus"; 
