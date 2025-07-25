@@ -1,8 +1,8 @@
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
 const deps = require("./package.json").dependencies;
+const path = require("path");
 
 module.exports = {
   entry: "./src/index",
@@ -11,7 +11,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    port: 3001,
+    port: process.env.PORT,
   },
   output: {
     publicPath: "auto",
@@ -47,8 +47,18 @@ module.exports = {
       },
       shared: {
         ...deps,
-        react: { singleton: true, requiredVersion: deps.react },
-        "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
       },
     }),
     new HtmlWebpackPlugin({

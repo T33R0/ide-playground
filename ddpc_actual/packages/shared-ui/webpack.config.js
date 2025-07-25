@@ -1,8 +1,7 @@
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
 const deps = require("./package.json").dependencies;
+const path = require("path");
 
 module.exports = {
   entry: "./src/index",
@@ -11,7 +10,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    port: 3003,
+    port: process.env.PORT,
   },
   output: {
     publicPath: "auto",
@@ -52,4 +51,4 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
-}; 
+};

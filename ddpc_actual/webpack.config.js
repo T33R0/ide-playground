@@ -1,17 +1,19 @@
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
 const deps = require("./package.json").dependencies;
+const path = require("path");
 
 module.exports = {
   entry: "./src/index",
   mode: "development",
   devServer: {
+    port: process.env.PORT,
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
-    port: 8080,
+    historyApiFallback: true,
+    hot: true,
   },
   output: {
     publicPath: "auto",
@@ -38,18 +40,29 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "host",
+      filename: "remoteEntry.js",
       exposes: {
         './eventBus': './src/utils/eventBus',
       },
       remotes: {
-        "mfe_home": "mfe_home@http://localhost:3001/remoteEntry.js",
-        "mfe_garage": "mfe_garage@http://localhost:3002/remoteEntry.js",
-        "shared_ui": "shared_ui@http://localhost:3003/remoteEntry.js"
+        "mfe_home": `mfe_home@http://localhost:3001/remoteEntry.js`,
+        "mfe_garage": `mfe_garage@http://localhost:3002/remoteEntry.js`,
+        "shared_ui": `shared_ui@http://localhost:3003/remoteEntry.js`
       },
       shared: {
         ...deps,
-        react: { singleton: true, requiredVersion: deps.react },
-        "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
       },
     }),
     new HtmlWebpackPlugin({

@@ -1,9 +1,11 @@
-
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/Layout";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Tools from "./components/Tools";
+import Profile from "./components/Profile";
+import GenericPage from "./components/GenericPage";
 
 const HomeApp = React.lazy(() => import("mfe_home/HomeApp"));
 const GarageApp = React.lazy(() => import("mfe_garage/GarageApp"));
@@ -16,6 +18,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeApp />} />
             <Route path="/garage" element={<GarageApp />} />
+            <Route path="/tools" element={<Tools />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/contact" element={<GenericPage title="Contact Us" />} />
+            <Route path="/terms" element={<GenericPage title="Terms of Service" />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>
@@ -23,4 +29,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;
