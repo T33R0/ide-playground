@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkhost=self.webpackChunkhost||[]).push([[313],{313:(n,e,t)=>{t.r(e),t.d(e,{dispatchEvent:()=>i,listenForEvent:()=>s});var i=function(n,e){var t=new CustomEvent(n,{detail:e});window.dispatchEvent(t)},s=function(n,e){return window.addEventListener(n,e),function(){return window.removeEventListener(n,e)}}}}]);
