@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmfe_template=self.webpackChunkmfe_template||[]).push([[522],{522:(e,t,a)=>{a.r(t),a.d(t,{default:()=>n});var l=a(914),r=a.n(l);a(647);const n=function(){return r().createElement("div",{className:"border-4 border-blue-500 p-4"},r().createElement("h1",{className:"text-xl font-bold text-blue-500"},"MFE Template Loaded"))}}}]);
