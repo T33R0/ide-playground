@@ -38,14 +38,12 @@ Execute all commands from the root directory of the project (/ddpc_actual).
 Run the clean script. This will delete all node_modules folders, dist folders, and package-lock.json files from the entire project.
 
 npm run clean
-
 (Note: If rm is not recognized on Windows, you may need to manually delete the specified folders.)
 
 2. Install All Dependencies:
 Run the master installation command. NPM will read the workspaces configuration in the root package.json and install all dependencies for the host and all packages correctly.
 
 npm install
-
 The environment is now stable and ready for development.
 
 4. Local Development Workflow
@@ -55,7 +53,6 @@ The entire MFE ecosystem can be launched with a single command.
 From the root directory, run the start command.
 
 npm start
-
 This command uses npm-run-all to execute the individual start scripts for the host and every MFE package in parallel.
 
 2. Access the Application:
@@ -71,7 +68,6 @@ The entire application can be compiled for production with a single command.
 From the root directory, run the build command.
 
 npm run build
-
 This command uses the NPM Workspaces build script to execute the build command in the host and every MFE package.
 
 2. Verify the Output:
@@ -99,7 +95,6 @@ Configure CORS: Ensure a .htaccess file exists in the subdomain's root and conta
 <IfModule mod_headers.c>
   Header set Access-Control-Allow-Origin "https://www.myddpc.com"
 </IfModule>
-
 Step 2: Create a Custom WordPress Plugin
 
 This plugin will define the shortcode used to embed the application.
@@ -135,7 +130,6 @@ function mfe_factory_app_shortcode() {
     return $html;
 }
 add_shortcode('mfe_factory_app', 'mfe_factory_app_shortcode');
-
 Activate Plugin: In your WordPress dashboard, go to Plugins, find "MyDDPC MFE Loader," and click Activate.
 
 Step 3: Create a Full-Width Page Template
@@ -172,7 +166,6 @@ Add Template Code: Paste the following code into the file.
 <?php wp_footer(); ?>
 </body>
 </html>
-
 Apply Template: Edit the target page in WordPress (e.g., "app-factory"), and under Page Attributes -> Template, select "MFE Factory App Host."
 
 Step 4: Add Final CSS
@@ -200,7 +193,6 @@ body.page-template-template-mfe-factory {
 .logged-in #ddpc-mfe-factory-root {
     min-height: calc(100vh - 32px);
 }
-
 Publish the changes.
 
 Step 5: Final Verification
