@@ -2,6 +2,7 @@ const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common.js");
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const devConfig = {
   mode: "development",
@@ -16,6 +17,9 @@ const devConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: "host",
+      exposes: {
+        "./eventBus": "./src/utils/eventBus",
+      },
       remotes: {
         mfe_home: "mfe_home@http://localhost:3002/remoteEntry.js",
         mfe_garage: "mfe_garage@http://localhost:3003/remoteEntry.js",
@@ -27,6 +31,9 @@ const devConfig = {
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
         "react-router-dom": { singleton: true, requiredVersion: deps["react-router-dom"] },
       },
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
     }),
   ],
 };

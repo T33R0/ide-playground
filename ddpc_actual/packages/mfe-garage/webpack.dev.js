@@ -21,6 +21,9 @@ const devConfig = {
       exposes: {
         "./GarageApp": "./src/App",
       },
+      remotes: {
+        host: "host@http://localhost:8080/remoteEntry.js",
+      },
       shared: {
         ...deps,
         react: { singleton: true, requiredVersion: deps.react },

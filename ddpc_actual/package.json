@@ -2,19 +2,22 @@
   "name": "mfe-factory-root",
   "private": true,
   "version": "1.0.0",
+  "workspaces": [
+    "host",
+    "packages/*"
+  ],
   "scripts": {
     "start": "npm-run-all --parallel start:*",
     "start:host": "npm start --prefix host",
     "start:mfe-home": "npm start --prefix packages/mfe-home",
     "start:mfe-garage": "npm start --prefix packages/mfe-garage",
     "start:shared-ui": "npm start --prefix packages/shared-ui",
-    "build": "npm-run-all --serial build:*",
-    "build:host": "npm run build --prefix host",
-    "build:mfe-home": "npm run build --prefix packages/mfe-home",
-    "build:mfe-garage": "npm run build --prefix packages/mfe-garage",
-    "build:shared-ui": "npm run build --prefix packages/shared-ui"
+    "start:template": "npm start --prefix packages/mfe-template",
+    "build": "npm run build --workspaces --if-present",
+    "clean": "rimraf --glob packages/*/node_modules packages/*/dist packages/*/package-lock.json host/node_modules host/dist host/package-lock.json node_modules package-lock.json"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1"
   }
 }

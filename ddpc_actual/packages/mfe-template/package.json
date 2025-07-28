@@ -2,8 +2,8 @@
   "name": "mfe-template",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "npx webpack serve --config webpack.dev.js",
+    "build": "npx webpack --config webpack.prod.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -30,8 +30,8 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.22.0"
   }
 }

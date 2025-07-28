@@ -16,11 +16,23 @@ const prodConfig = {
       exposes: {
         "./HomeApp": "./src/App",
       },
+      remotes: {
+        shared_ui: "shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+      },
       shared: {
         ...deps,
-        react: { singleton: true, requiredVersion: deps.react },
-        "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
-        "react-router-dom": { singleton: true, requiredVersion: deps["react-router-dom"] },
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
       },
     }),
   ],

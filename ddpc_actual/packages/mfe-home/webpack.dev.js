@@ -21,6 +21,9 @@ const devConfig = {
       exposes: {
         "./HomeApp": "./src/App",
       },
+      remotes: {
+        shared_ui: "shared_ui@http://localhost:3004/remoteEntry.js",
+      },
       shared: {
         ...deps,
         react: { singleton: true, requiredVersion: deps.react },

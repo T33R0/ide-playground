@@ -16,11 +16,23 @@ const prodConfig = {
       exposes: {
         "./GarageApp": "./src/App",
       },
+      remotes: {
+        host: "host@https://app.myddpc.com/remoteEntry.js",
+      },
       shared: {
         ...deps,
-        react: { singleton: true, requiredVersion: deps.react },
-        "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
-        "react-router-dom": { singleton: true, requiredVersion: deps["react-router-dom"] },
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
       },
     }),
   ],
