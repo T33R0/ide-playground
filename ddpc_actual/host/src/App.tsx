@@ -1,35 +1,36 @@
-import React, { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import { TwentyFirstToolbar } from '@21st-extension/toolbar-react';
-import { ReactPlugin } from '@21st-extension/react';
-import "./index.css";
-import Layout from "./components/Layout";
-import ErrorBoundary from "./components/ErrorBoundary";
-import Tools from "./components/Tools";
-import Profile from "./components/Profile";
-import GenericPage from "./components/GenericPage";
+import { Toaster } from "shared_ui/toaster";
+import { Toaster as Sonner } from "shared_ui/sonner";
+import { TooltipProvider } from "shared_ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import React, { Suspense } from 'react'; // Ensure Suspense is imported
+const Dashboard = React.lazy(() => import('mfe_home/App'));
+const Garage = React.lazy(() => import('mfe_garage/App'));
+const BuildPlans = React.lazy(() => import('mfe_build_plans/BuildPlansApp'));
 
-const HomeApp = React.lazy(() => import("mfe_home/HomeApp"));
-const GarageApp = React.lazy(() => import("mfe_garage/GarageApp"));
+const queryClient = new QueryClient();
 
-const App = () => {
-  return (
-    <Layout>
-      {process.env.NODE_ENV === 'development' && <TwentyFirstToolbar config={{ plugins: [ReactPlugin] }} />}
-      <ErrorBoundary>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<HomeApp />} />
-            <Route path="/garage" element={<GarageApp />} />
-            <Route path="/tools" element={<Tools />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/contact" element={<GenericPage title="Contact Us" />} />
-            <Route path="/terms" element={<GenericPage title="Terms of Service" />} />
-          </Routes>
-        </Suspense>
-      </ErrorBoundary>
-    </Layout>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="min-h-screen bg-background">
+          <Navigation />
+          <Suspense fallback={<div className="flex-1 p-8 pt-6">Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/garage" element={<Garage />} />
+              <Route path="/build-plans" element={<BuildPlans />} />
+              {/* <Route path="*" element={<NotFound />} /> You can add a NotFound MFE later */}
+            </Routes>
+          </Suspense>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;

@@ -21,6 +21,7 @@ const prodConfig = {
         mfe_home: "mfe_home@https://app.myddpc.com/mfe-home/remoteEntry.js",
         mfe_garage: "mfe_garage@https://app.myddpc.com/mfe-garage/remoteEntry.js",
         shared_ui: "shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+        mfe_build_plans: "mfe_build_plans@https://app.myddpc.com/mfe-build-plans/remoteEntry.js",
       },
       shared: {
         ...deps,

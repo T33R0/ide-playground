@@ -1,9 +1,8 @@
 
-const sharedTheme = require('../../tailwind-theme');
+const sharedTheme = require('../../host/tailwind-theme');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       ...sharedTheme

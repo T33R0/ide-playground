@@ -14,7 +14,15 @@ const prodConfig = {
       name: "shared_ui",
       filename: "remoteEntry.js",
       exposes: {
-        "./Button": "./src/components/Button",
+        "./button": "./src/components/ui/button",
+        "./card": "./src/components/ui/card",
+        "./progress": "./src/components/ui/progress",
+        "./badge": "./src/components/ui/badge",
+        "./checkbox": "./src/components/ui/checkbox",
+        "./toaster": "./src/components/ui/toaster",
+        "./sonner": "./src/components/ui/sonner",
+        "./tooltip": "./src/components/ui/tooltip",
+        "./utils": "./src/lib/utils",
       },
       shared: {
         ...deps,

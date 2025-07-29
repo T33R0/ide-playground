@@ -24,6 +24,7 @@ const devConfig = {
         mfe_home: "mfe_home@http://localhost:3002/remoteEntry.js",
         mfe_garage: "mfe_garage@http://localhost:3003/remoteEntry.js",
         shared_ui: "shared_ui@http://localhost:3004/remoteEntry.js",
+        mfe_build_plans: "mfe_build_plans@http://localhost:3005/remoteEntry.js",
       },
       shared: {
         ...deps,

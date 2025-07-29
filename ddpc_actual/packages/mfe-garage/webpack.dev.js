@@ -23,6 +23,7 @@ const devConfig = {
       },
       remotes: {
         host: "host@http://localhost:8080/remoteEntry.js",
+        shared_ui: "shared_ui@http://localhost:3004/remoteEntry.js",
       },
       shared: {
         ...deps,
