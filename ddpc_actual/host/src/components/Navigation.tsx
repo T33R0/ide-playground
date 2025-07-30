@@ -1,58 +1,65 @@
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "shared_ui/button";
-import { Car, BarChart3, Wrench, Home } from "lucide-react";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from 'shared_ui/button';
+import { Car, BarChart3, Wrench, Warehouse } from "lucide-react";
 import { cn } from "shared_ui/utils";
 
-const Navigation = () => {
+const navLinks = [
+  { name: 'Garage', href: '/garage', icon: Warehouse },
+  { name: 'Build Plans', href: '/build-plans', icon: Wrench },
+  { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
+];
+
+const Navigation = ({ isScrolled }: { isScrolled: boolean }) => {
   const location = useLocation();
 
-  const navItems = [
-    { path: "/", label: "Home", icon: Home },
-    { path: "/garage", label: "Garage", icon: Car },
-    { path: "/builds", label: "Build Plans", icon: Wrench },
-    { path: "/dashboard", label: "Dashboard", icon: BarChart3 },
-  ];
-
   return (
-    <nav className="bg-card border-b border-border shadow-warehouse">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-8">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-tech rounded-lg flex items-center justify-center">
-                <Car className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-xl bg-gradient-tech bg-clip-text text-transparent">
-                DigitalGarage
-              </span>
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-20 text-white transition-colors duration-300",
+        isScrolled ? "bg-transparent" : "bg-transparent"
+      )}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <Link to="/" className="text-xl font-bold flex items-center gap-2">
+              <img src="http://localhost:8080/assets/greyscale-transparent-symbol.png" alt="DDPC Logo" className="h-8 sm:h-10 md:h-12" />
+              ddpc
             </Link>
-            
-            <div className="flex space-x-1">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = location.pathname === item.path;
-                
-                return (
-                  <Link key={item.path} to={item.path}>
-                    <Button
-                      variant={isActive ? "tech" : "ghost"}
-                      size="sm"
-                      className={cn(
-                        "flex items-center space-x-2",
-                        isActive && "shadow-tech"
-                      )}
-                    >
-                      <Icon className="w-4 h-4" />
-                      <span>{item.label}</span>
-                    </Button>
-                  </Link>
-                );
-              })}
-            </div>
+          </div>
+          <div className="hidden md:flex md:items-center md:space-x-6">
+            {navLinks.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    'flex items-center gap-2 rounded-md p-2 text-sm font-medium transition-colors',
+                    isActive
+                      ? 'bg-track-grey text-chalk-white'
+                      : 'text-exhaust-grey hover:bg-track-grey/50 hover:text-chalk-white'
+                  )}
+                  title={item.name}
+                >
+                  <Icon className="h-5 w-5" />
+                </Link>
+              );
+            })}
+          </div>
+          <div className="flex items-center">
+            <Button variant="ghost" className="text-chalk-white hover:bg-track-grey/50">
+              Sign In
+            </Button>
+            <Button className="ml-2 bg-monza-blue text-chalk-white hover:bg-monza-blue/90">
+              Register
+            </Button>
           </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 

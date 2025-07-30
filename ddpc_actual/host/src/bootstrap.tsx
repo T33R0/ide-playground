@@ -1,14 +1,15 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import "shared_ui/index.css";
 
-const container = document.getElementById("ddpc-mfe-factory-root");
-const root = createRoot(container!);
-
+const root = ReactDOM.createRoot(
+  document.getElementById("ddpc-mfe-factory-root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <App />
     </BrowserRouter>
   </React.StrictMode>

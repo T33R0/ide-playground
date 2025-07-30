@@ -117,6 +117,12 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html,
+  body,
+  #ddpc-mfe-factory-root {
+    @apply h-full;
+  }
+
   body {
     @apply bg-background text-foreground;
   }

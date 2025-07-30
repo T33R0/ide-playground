@@ -1,15 +1,11 @@
 
-const sharedTheme = require('../../host/tailwind-theme');
+const sharedConfig = require('../shared-ui/tailwind.config.js');
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  theme: {
-    extend: {
-      ...sharedTheme
-    },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-} 
+  ...sharedConfig,
+  content: [
+    ...sharedConfig.content.map(p => `../shared-ui/${p}`),
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+  ],
+}; 

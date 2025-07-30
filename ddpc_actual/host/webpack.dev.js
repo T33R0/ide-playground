@@ -10,6 +10,9 @@ const devConfig = {
     port: 8080, // Your host port
     historyApiFallback: true,
     hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   output: {
     publicPath: "http://localhost:8080/",
@@ -25,6 +28,7 @@ const devConfig = {
         mfe_garage: "mfe_garage@http://localhost:3003/remoteEntry.js",
         shared_ui: "shared_ui@http://localhost:3004/remoteEntry.js",
         mfe_build_plans: "mfe_build_plans@http://localhost:3005/remoteEntry.js",
+        mfe_dashboard: "mfe_dashboard@http://localhost:3006/remoteEntry.js",
       },
       shared: {
         ...deps,

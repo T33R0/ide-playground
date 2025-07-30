@@ -13,6 +13,7 @@
     "start:mfe-garage": "npm start --prefix packages/mfe-garage",
     "start:shared-ui": "npm start --prefix packages/shared-ui",
     "start:mfe-build-plans": "npm start --prefix packages/mfe-build-plans",
+    "start:mfe-dashboard": "npm start --prefix packages/mfe-dashboard",
     "build:mfe-build-plans": "npm run build --prefix packages/mfe-build-plans",
     "start:template": "npm start --prefix packages/mfe-template",
     "build": "npm run build --workspaces --if-present",

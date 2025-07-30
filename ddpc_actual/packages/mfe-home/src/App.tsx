@@ -1,142 +1,166 @@
-import { Card, CardContent, CardHeader, CardTitle } from "shared_ui/card";
-import { Progress } from "shared_ui/progress";
-import { Badge } from "shared_ui/badge";
-import { Car, Wrench, Clock, TrendingUp, Calendar, DollarSign } from "lucide-react";
+import React from "react";
+import { Button } from "shared_ui/button";
+import { Link } from "react-router-dom";
+import {
+  Car,
+  Wrench,
+  BarChart3,
+  Zap,
+  NotebookText,
+  Lightbulb,
+} from "lucide-react";
 
-const Dashboard = () => {
-  const stats = [
-    { label: "Total Vehicles", value: "3", icon: Car, change: "+1", changeType: "positive" },
-    { label: "Active Builds", value: "2", icon: Wrench, change: "0", changeType: "neutral" },
-    { label: "Avg. Build Time", value: "4.2 mo", icon: Clock, change: "-0.3", changeType: "positive" },
-    { label: "Total Investment", value: "$24.5k", icon: DollarSign, change: "+2.1k", changeType: "positive" },
-  ];
+const heroImage = "http://localhost:8080/assets/hero-garage.jpg";
 
-  const recentActivity = [
-    { id: 1, action: "Started engine rebuild", vehicle: "Project Thunder", date: "2024-01-15", type: "build" },
-    { id: 2, action: "Ordered performance parts", vehicle: "Work Horse", date: "2024-01-14", type: "purchase" },
-    { id: 3, action: "Completed suspension upgrade", vehicle: "Classic Beast", date: "2024-01-12", type: "completion" },
-    { id: 4, action: "Scheduled maintenance", vehicle: "Project Thunder", date: "2024-01-10", type: "maintenance" },
-  ];
+const featuresData = [
+  {
+    icon: Car,
+    title: "Vehicle Management",
+    description:
+      "Organize and track your entire vehicle collection in one place",
+  },
+  {
+    icon: Wrench,
+    title: "Build Planning",
+    description:
+      "Plan, track, and execute modification projects with detailed task management",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Dashboard",
+    description: "Monitor progress, costs, and timelines across all your projects",
+  },
+  {
+    icon: Zap,
+    title: "Performance Tracking",
+    description: "Document performance gains and modifications over time",
+  },
+  {
+    icon: NotebookText,
+    title: "Maintenance Logs",
+    description: "Keep detailed records of maintenance and service history",
+  },
+  {
+    icon: Lightbulb,
+    title: "Smart Insights",
+    description: "Get intelligent recommendations for your builds and maintenance",
+  },
+];
 
-  const currentBuilds = [
-    { name: "Project Thunder - Engine Rebuild", progress: 75, dueDate: "2024-02-15", priority: "high" },
-    { name: "Work Horse - Lift Kit Installation", progress: 45, dueDate: "2024-03-01", priority: "medium" },
-    { name: "Classic Beast - Paint Job", progress: 90, dueDate: "2024-01-25", priority: "low" },
-  ];
+const FeatureCard = ({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+}) => (
+  <div className="rounded-lg bg-card/20 p-6">
+    <div className="flex items-center gap-4">
+      <Icon className="h-8 w-8 text-primary" />
+      <h3 className="text-xl font-semibold">{title}</h3>
+    </div>
+    <p className="mt-4 text-muted-foreground">{description}</p>
+  </div>
+);
 
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case "build": return "🔧";
-      case "purchase": return "🛒";
-      case "completion": return "✅";
-      case "maintenance": return "🔧";
-      default: return "📝";
-    }
-  };
+const features = (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(2, 1fr)",
+      gap: "24px",
+    }}
+  >
+    {featuresData.map((feature) => (
+      <FeatureCard
+        key={feature.title}
+        icon={feature.icon}
+        title={feature.title}
+        description={feature.description}
+      />
+    ))}
+  </div>
+);
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case "high": return "bg-destructive";
-      case "medium": return "bg-warehouse-warning";
-      case "low": return "bg-warehouse-success";
-      default: return "bg-muted";
-    }
-  };
-
+const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-warehouse">
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Project Dashboard</h1>
-          <p className="text-muted-foreground">Track your build progress and garage analytics</p>
+    <div className="bg-background min-h-screen text-foreground font-sans">
+      <div
+        className="relative w-full flex items-center justify-center bg-cover"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${heroImage})`,
+          backgroundPosition: "center",
+          minHeight: "80vh",
+        }}
+      >
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+          <p className="mt-6 max-w-3xl text-lg text-foreground/80">
+            The ultimate platform for managing your vehicles, planning builds,
+            and tracking progress in a high-tech warehouse environment.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link to="/garage">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-foreground border-border hover:bg-card/50"
+              >
+                View My Garage
+              </Button>
+            </Link>
+            <Link to="/dashboard">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-foreground border-border hover:bg-card/50"
+              >
+                Project Dashboard
+              </Button>
+            </Link>
+          </div>
         </div>
+      </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {stats.map((stat, index) => (
-            <Card key={index} className="bg-card border-warehouse-steel shadow-warehouse">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
-                    <p className="text-2xl font-bold">{stat.value}</p>
-                    <div className="flex items-center mt-2">
-                      <TrendingUp className="w-4 h-4 text-warehouse-success mr-1" />
-                      <span className={`text-sm ${stat.changeType === 'positive' ? 'text-warehouse-success' : 'text-destructive'}`}>
-                        {stat.change}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="w-12 h-12 bg-gradient-tech rounded-lg flex items-center justify-center">
-                    <stat.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+      <div className="bg-background py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Powerful Tools for Every Enthusiast
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-muted-foreground">
+              From weekend warriors to professional builders, our platform
+              provides everything you need to manage your automotive projects.
+            </p>
+          </div>
+          <div className="mt-16">{features}</div>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Current Builds */}
-          <Card className="bg-card border-warehouse-steel shadow-warehouse">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Wrench className="w-5 h-5 mr-2" />
-                Current Builds
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {currentBuilds.map((build, index) => (
-                <div key={index} className="p-4 bg-secondary rounded-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-medium">{build.name}</h4>
-                    <Badge className={`${getPriorityColor(build.priority)} text-white`}>
-                      {build.priority}
-                    </Badge>
-                  </div>
-                  <div className="mb-2">
-                    <div className="flex justify-between text-sm mb-1">
-                      <span>Progress</span>
-                      <span>{build.progress}%</span>
-                    </div>
-                    <Progress value={build.progress} className="h-2" />
-                  </div>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    Due: {build.dueDate}
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Recent Activity */}
-          <Card className="bg-card border-warehouse-steel shadow-warehouse">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Clock className="w-5 h-5 mr-2" />
-                Recent Activity
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {recentActivity.map((activity) => (
-                  <div key={activity.id} className="flex items-start space-x-3 p-3 bg-secondary rounded-lg">
-                    <div className="text-lg">{getActivityIcon(activity.type)}</div>
-                    <div className="flex-1">
-                      <p className="font-medium">{activity.action}</p>
-                      <p className="text-sm text-muted-foreground">{activity.vehicle}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{activity.date}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+      <div className="bg-background py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Ready to Get Started?
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-muted-foreground">
+            Join thousands of automotive enthusiasts who trust ddpc to manage
+            their builds and track their progress.
+          </p>
+          <div className="mt-10">
+            <Link to="/garage">
+              <Button
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Explore Your Garage →
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Home;

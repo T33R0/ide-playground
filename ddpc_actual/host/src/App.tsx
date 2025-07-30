@@ -4,33 +4,52 @@ import { TooltipProvider } from "shared_ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import React, { Suspense } from 'react'; // Ensure Suspense is imported
-const Dashboard = React.lazy(() => import('mfe_home/App'));
-const Garage = React.lazy(() => import('mfe_garage/App'));
+import React, { Suspense, useState, useRef, useEffect } from 'react';
+
+const Home = React.lazy(() => import('mfe_home/HomeApp'));
+const Garage = React.lazy(() => import('mfe_garage/GarageApp'));
 const BuildPlans = React.lazy(() => import('mfe_build_plans/BuildPlansApp'));
+const Dashboard = React.lazy(() => import('mfe_dashboard/DashboardApp'));
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="min-h-screen bg-background">
-          <Navigation />
-          <Suspense fallback={<div className="flex-1 p-8 pt-6">Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/garage" element={<Garage />} />
-              <Route path="/build-plans" element={<BuildPlans />} />
-              {/* <Route path="*" element={<NotFound />} /> You can add a NotFound MFE later */}
-            </Routes>
-          </Suspense>
+const App = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mainEl = mainRef.current;
+    const handleScroll = () => {
+      if (mainEl) {
+        setIsScrolled(mainEl.scrollTop > 10);
+      }
+    };
+
+    mainEl?.addEventListener('scroll', handleScroll);
+    return () => mainEl?.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <div className="h-screen flex flex-col">
+          <Navigation isScrolled={isScrolled} />
+          <main ref={mainRef} className="flex-1 overflow-y-auto flex flex-col">
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/garage" element={<Garage />} />
+                <Route path="/build-plans" element={<BuildPlans />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Routes>
+            </Suspense>
+          </main>
         </div>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

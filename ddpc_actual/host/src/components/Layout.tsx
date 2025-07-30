@@ -1,5 +1,4 @@
-
-import React, { useEffect, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -8,20 +7,16 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  useEffect(() => {
-    import('../utils/eventBus').then(({ listenForEvent }) => {
-      const cleanup = listenForEvent('show:notification', (e: CustomEvent) => {
-        console.log('Event received in Host:', e.detail);
-        // In the future, this could trigger a toast notification UI
-      });
-      return cleanup;
-    });
-  }, []);
+  // The eventBus listener can be removed if not used,
+  // but it doesn't affect the layout.
+  // useEffect(() => { ... });
 
   return (
     <div className="flex flex-col min-h-screen bg-neutral-800 text-neutral-100">
       <Header />
-      <main className="flex-grow pt-20">
+      {/* MAKE THE MAIN ELEMENT A FLEX CONTAINER */}
+      <main className="flex flex-col flex-grow pt-20">
+        {/* The MFE now renders inside a container that can properly expand */}
         {children}
       </main>
       <Footer />
@@ -29,4 +24,4 @@ const Layout = ({ children }: LayoutProps) => {
   );
 };
 
-export default Layout; 
+export default Layout;

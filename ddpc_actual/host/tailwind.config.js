@@ -1,16 +1,18 @@
 
-const sharedTheme = require('./tailwind-theme');
-
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      ...sharedTheme
+      colors: {
+        'carbon-black': '#1A1A1A',
+        'track-grey': '#2B2B2B',
+        'monza-blue': '#0D99FF',
+        'chalk-white': '#F5F5F5',
+        'exhaust-grey': '#888888',
+      },
+      fontFamily: {
+        sans: ['"Poppins"', 'sans-serif'],
+      },
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
-} 
+}; 

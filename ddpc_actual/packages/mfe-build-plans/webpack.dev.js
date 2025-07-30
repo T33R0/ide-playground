@@ -10,9 +10,12 @@ const devConfig = {
     port: 3005,
     historyApiFallback: true,
     hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "http://localhost:3005/",
   },
   plugins: [
     new ModuleFederationPlugin({

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "shared_ui/card";
 import { Button } from "shared_ui/button";
 import { Badge } from "shared_ui/badge";
@@ -71,13 +71,13 @@ const BuildPlans = () => {
   const [buildPlans, setBuildPlans] = useState<BuildPlan[]>(mockBuildPlans);
 
   const toggleTask = (planId: string, taskId: string) => {
-    setBuildPlans(plans => 
-      plans.map(plan => 
-        plan.id === planId 
+    setBuildPlans(plans =>
+      plans.map(plan =>
+        plan.id === planId
           ? {
               ...plan,
-              tasks: plan.tasks.map(task => 
-                task.id === taskId 
+              tasks: plan.tasks.map(task =>
+                task.id === taskId
                   ? { ...task, completed: !task.completed }
                   : task
               )
@@ -177,13 +177,13 @@ const BuildPlans = () => {
                 <h4 className="font-medium mb-4">Tasks</h4>
                 <div className="space-y-3">
                   {plan.tasks.map((task) => (
-                    <div 
-                      key={task.id} 
+                    <div
+                      key={task.id}
                       className={`flex items-center space-x-3 p-3 rounded-lg border transition-all ${
                         task.completed ? 'bg-warehouse-success/10 border-warehouse-success/20' : 'bg-secondary border-border'
                       }`}
                     >
-                      <Checkbox 
+                      <Checkbox
                         checked={task.completed}
                         onCheckedChange={() => toggleTask(plan.id, task.id)}
                       />
