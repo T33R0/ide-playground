@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 import { Button } from "shared_ui/button";
 import { Link } from "react-router-dom";
 import {

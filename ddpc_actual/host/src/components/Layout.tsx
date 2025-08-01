@@ -1,25 +1,32 @@
-import React, { ReactNode } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import React, { ReactNode, useRef, useState, useEffect } from 'react';
+import Navigation from './Navigation';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  // The eventBus listener can be removed if not used,
-  // but it doesn't affect the layout.
-  // useEffect(() => { ... });
+  const [isScrolled, setIsScrolled] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mainEl = mainRef.current;
+    const handleScroll = () => {
+      if (mainEl) {
+        setIsScrolled(mainEl.scrollTop > 10);
+      }
+    };
+    mainEl?.addEventListener('scroll', handleScroll);
+    return () => mainEl?.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-800 text-neutral-100">
-      <Header />
-      {/* MAKE THE MAIN ELEMENT A FLEX CONTAINER */}
-      <main className="flex flex-col flex-grow pt-20">
-        {/* The MFE now renders inside a container that can properly expand */}
+    <div className="h-screen flex flex-col">
+      <Navigation isScrolled={isScrolled} />
+      {/* This main element now allows its children to control their own layout */}
+      <main ref={mainRef} className="flex-1 overflow-y-auto">
         {children}
       </main>
-      <Footer />
     </div>
   );
 };

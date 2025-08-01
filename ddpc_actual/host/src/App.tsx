@@ -36,7 +36,7 @@ const App = () => {
         <Sonner />
         <div className="h-screen flex flex-col">
           <Navigation isScrolled={isScrolled} />
-          <main ref={mainRef} className="flex-1 overflow-y-auto flex flex-col">
+          <main ref={mainRef} className="flex-1 overflow-y-auto">
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                 <Route path="/" element={<Home />} />

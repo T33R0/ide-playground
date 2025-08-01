@@ -1,5 +1,6 @@
 
 import React from "react";
+import "./index.css";
 import { Card, CardContent, CardHeader, CardTitle } from "shared_ui/card";
 import { Progress } from "shared_ui/progress";
 import { Badge } from "shared_ui/badge";

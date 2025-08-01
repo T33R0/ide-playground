@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./index.css";
 import { Card, CardContent, CardHeader, CardTitle } from "shared_ui/card";
 import { Button } from "shared_ui/button";
 import { Badge } from "shared_ui/badge";
