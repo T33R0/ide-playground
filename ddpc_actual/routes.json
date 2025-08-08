@@ -1,0 +1,6 @@
+{
+  "/api/v1/vehicles": "/vehicles",
+  "/api/v1/vehicles/:id": "/vehicles/:id",
+  "/api/v1/vehicles/:id/maintenance": "/maintenance_logs?vehicle_id=:id",
+  "/api/v1/vehicles/:id/builds": "/build_items?vehicle_id=:id"
+}

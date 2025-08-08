@@ -33,6 +33,7 @@ const devConfig = {
         react: { singleton: true, requiredVersion: deps.react },
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
         "react-router-dom": { singleton: true, requiredVersion: deps["react-router-dom"] },
+        "shared-config": { singleton: true, eager: true },
       },
     }),
     new HtmlWebpackPlugin({

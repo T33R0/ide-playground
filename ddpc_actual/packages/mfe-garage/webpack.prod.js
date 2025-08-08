@@ -18,6 +18,7 @@ const prodConfig = {
       },
       remotes: {
         host: "host@https://app.myddpc.com/remoteEntry.js",
+        "shared-ui": "mf-shared-ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
       },
       shared: {
         ...deps,
@@ -33,6 +34,7 @@ const prodConfig = {
           singleton: true,
           requiredVersion: deps["react-router-dom"],
         },
+        "shared-config": { singleton: true, eager: true },
       },
     }),
   ],

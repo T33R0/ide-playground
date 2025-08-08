@@ -7,21 +7,25 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "npm-run-all --parallel start:*",
+    "start": "npm-run-all --parallel start:api start:host start:mfe-home start:mfe-garage start:shared-ui start:mfe-build-plans start:mfe-maintenance start:mfe-dashboard start:mfe-account",
     "start:host": "npm start --prefix host",
     "start:mfe-home": "npm start --prefix packages/mfe-home",
     "start:mfe-garage": "npm start --prefix packages/mfe-garage",
     "start:shared-ui": "npm start --prefix packages/shared-ui",
     "start:mfe-build-plans": "npm start --prefix packages/mfe-build-plans",
+    "start:mfe-maintenance": "npm start --prefix packages/mfe-maintenance",
     "start:mfe-dashboard": "npm start --prefix packages/mfe-dashboard",
+    "start:mfe-account": "npm start --prefix packages/mfe-account",
+    "start:api": "json-server --watch db.json --routes routes.json --port 8001 --host 127.0.0.1",
     "build:mfe-build-plans": "npm run build --prefix packages/mfe-build-plans",
-    "start:template": "npm start --prefix packages/mfe-template",
     "build": "npm run build --workspaces --if-present",
     "clean": "rimraf --glob packages/*/node_modules packages/*/dist packages/*/package-lock.json host/node_modules host/dist host/package-lock.json node_modules package-lock.json"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^10.0.0",
+    "json-server": "^0.17.4",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.5.6",
     "postcss-loader": "^8.1.1",

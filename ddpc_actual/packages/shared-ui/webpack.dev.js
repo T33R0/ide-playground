@@ -70,8 +70,13 @@ const devConfig = {
         "./toggle": "./src/components/ui/toggle.tsx",
         "./tooltip": "./src/components/ui/tooltip.tsx",
         "./use-toast": "./src/components/ui/use-toast.ts",
+        "./context/tier-context": "./src/context/tier-context.tsx",
+        "./use-tier": "./src/hooks/use-tier.tsx",
+        "./tier-upsell": "./src/components/ui/tier-upsell.tsx",
+        "./tier-switcher": "./src/components/ui/tier-switcher.tsx",
         "./utils": "./src/lib/utils.ts",
         "./index.css": "./src/index.css",
+        "./api": "./src/api.ts",
       },
       shared: {
         ...deps,

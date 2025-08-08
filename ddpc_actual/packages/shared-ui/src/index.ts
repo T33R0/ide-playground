@@ -1,5 +1,10 @@
 
 import("./bootstrap"); 
+
+// CSS Loading Utilities
+export * from './lib/cssLoader';
+
+// UI Components
 export * from './components/ui/accordion';
 export * from './components/ui/alert';
 export * from './components/ui/alert-dialog';
@@ -48,3 +53,19 @@ export * from './components/ui/toggle-group';
 export * from './components/ui/tooltip';
 export * from './components/ui/sidebar';
 export { Toaster as SonnerToaster } from './components/ui/sonner';
+
+// Tier management system
+export * from './hooks/use-tier';
+export * from './components/ui/tier-upsell';
+export * from './components/ui/tier-switcher';
+
+// Authentication
+export * from './types';
+export * from './contexts/AuthContext';
+export * from './services/authService';
+export * from './components/auth/LoginForm';
+export * from './components/auth/RegistrationForm';
+export * from './components/auth/UserProfile';
+
+// API Helpers
+export * from './api';

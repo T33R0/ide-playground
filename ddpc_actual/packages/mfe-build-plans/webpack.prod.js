@@ -16,10 +16,14 @@ const prodConfig = {
       exposes: {
         "./BuildPlansApp": "./src/App",
       },
+      remotes: {
+        "shared-ui": "mf-shared-ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+      },
       shared: {
         ...deps,
         react: { singleton: true, requiredVersion: deps.react },
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
+        "shared-config": { singleton: true, eager: true },
       },
     }),
   ],

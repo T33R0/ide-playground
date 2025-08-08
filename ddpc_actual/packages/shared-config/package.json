@@ -1,0 +1,17 @@
+{
+  "name": "shared-config",
+  "version": "1.0.0",
+  "description": "Shared configuration for all MFEs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}

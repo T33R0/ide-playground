@@ -3,6 +3,7 @@ const commonConfig = require("./webpack.common.js");
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 const devConfig = {
   mode: "development",
@@ -18,6 +19,10 @@ const devConfig = {
     publicPath: "http://localhost:3006/",
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.REACT_APP_API_URL': JSON.stringify('http://localhost:8001')
+    }),
     new ModuleFederationPlugin({
       name: "mfe_dashboard",
       filename: "remoteEntry.js",
@@ -26,6 +31,7 @@ const devConfig = {
       },
       remotes: {
         shared_ui: "shared_ui@http://localhost:3004/remoteEntry.js",
+        host: "host@http://localhost:8080/remoteEntry.js",
       },
       shared: {
         ...deps,
@@ -39,4 +45,4 @@ const devConfig = {
   ],
 };
 
-module.exports = merge(commonConfig, devConfig); 
+module.exports = merge(commonConfig, devConfig);

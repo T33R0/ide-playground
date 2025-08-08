@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Tier Testing</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .tier-link { 
+            display: inline-block; 
+            margin: 10px; 
+            padding: 10px 20px; 
+            background: #007bff; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+        .tier-link:hover { background: #0056b3; }
+        .description { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Garage Tier Testing</h1>
+    <div class="description">
+        <p>Click the links below to test different tier configurations:</p>
+        <ul>
+            <li><strong>Free Tier:</strong> 2 vehicle slots, CSV export only</li>
+            <li><strong>Driver Tier:</strong> 5 vehicle slots, CSV export</li>
+            <li><strong>Builder Tier:</strong> 10 vehicle slots, full export</li>
+            <li><strong>Pro Tier:</strong> Unlimited vehicle slots, full export</li>
+        </ul>
+    </div>
+    
+    <a href="http://localhost:3003?tier=free" class="tier-link">Test Free Tier</a>
+    <a href="http://localhost:3003?tier=driver" class="tier-link">Test Driver Tier</a>
+    <a href="http://localhost:3003?tier=builder" class="tier-link">Test Builder Tier</a>
+    <a href="http://localhost:3003?tier=pro" class="tier-link">Test Pro Tier</a>
+    
+    <div class="description">
+        <h2>What to Test:</h2>
+        <ol>
+            <li><strong>Add Vehicle Button:</strong> Should work when clicked (opens modal)</li>
+            <li><strong>Tier Badge:</strong> Should show the correct tier name next to "My Garage"</li>
+            <li><strong>Vehicle Slots:</strong> Should show correct count based on tier (2/5/10/∞)</li>
+            <li><strong>Upsell Card:</strong> Should appear when vehicle limit is reached</li>
+        </ol>
+    </div>
+</body>
+</html>

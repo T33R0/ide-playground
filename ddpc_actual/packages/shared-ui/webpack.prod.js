@@ -11,18 +11,27 @@ const prodConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "shared_ui",
+      name: "mf-shared-ui",
       filename: "remoteEntry.js",
       exposes: {
         "./button": "./src/components/ui/button",
         "./card": "./src/components/ui/card",
         "./progress": "./src/components/ui/progress",
         "./badge": "./src/components/ui/badge",
+        "./alert": "./src/components/ui/alert",
+        "./dialog": "./src/components/ui/dialog",
+        "./input": "./src/components/ui/input",
+        "./label": "./src/components/ui/label",
         "./checkbox": "./src/components/ui/checkbox",
         "./toaster": "./src/components/ui/toaster",
         "./sonner": "./src/components/ui/sonner",
         "./tooltip": "./src/components/ui/tooltip",
+        "./use-tier": "./src/hooks/use-tier",
+        "./context/tier-context": "./src/context/tier-context",
+        "./tier-upsell": "./src/components/ui/tier-upsell",
+        "./tier-switcher": "./src/components/ui/tier-switcher",
         "./utils": "./src/lib/utils",
+        "./api": "./src/api.ts",
       },
       shared: {
         ...deps,

@@ -6,10 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,7 +18,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "shared_ui/*": [
+        "../packages/shared-ui/src/components/ui/*"
+      ],
+      "shared_ui/context/*": [
+        "../packages/shared-ui/src/context/*"
+      ],
+      "shared_ui/lib/*": [
+        "../packages/shared-ui/src/lib/*"
+      ]
+    }
   },
   "include": [
     "src"

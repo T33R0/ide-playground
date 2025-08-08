@@ -22,19 +22,23 @@ const devConfig = {
       name: "host",
       exposes: {
         "./eventBus": "./src/utils/eventBus",
+        "./dataService": "./src/services/dataService",
       },
       remotes: {
         mfe_home: "mfe_home@http://localhost:3002/remoteEntry.js",
         mfe_garage: "mfe_garage@http://localhost:3003/remoteEntry.js",
         shared_ui: "shared_ui@http://localhost:3004/remoteEntry.js",
-        mfe_build_plans: "mfe_build_plans@http://localhost:3005/remoteEntry.js",
+        mfe_build_plans: "mfe_build_plans@http://localhost:3007/remoteEntry.js",
+        mfe_maintenance: "mfe_maintenance@http://localhost:3008/remoteEntry.js",
         mfe_dashboard: "mfe_dashboard@http://localhost:3006/remoteEntry.js",
+        mfe_account: "mfe_account@http://localhost:3009/remoteEntry.js",
       },
       shared: {
         ...deps,
         react: { singleton: true, requiredVersion: deps.react },
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
         "react-router-dom": { singleton: true, requiredVersion: deps["react-router-dom"] },
+        "shared-config": { singleton: true, eager: true },
       },
     }),
     new HtmlWebpackPlugin({

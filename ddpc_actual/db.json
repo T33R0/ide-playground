@@ -1,0 +1,244 @@
+{
+  "vehicles": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "year": 1999,
+      "make": "BMW",
+      "model": "Z3 Coupe",
+      "trim": "2.8L",
+      "nickname": "The Track Rat",
+      "status": "Active",
+      "visibility": "Public",
+      "photo_url": "https://placehold.co/600x400/1a1a1a/ffffff?text=Z3+Coupe",
+      "created_at": "2023-01-15T12:00:00Z",
+      "updated_at": "2025-08-01T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "year": 2016,
+      "make": "BMW",
+      "model": "M235i xDrive",
+      "trim": "Base",
+      "nickname": "The Daily",
+      "status": "Active",
+      "visibility": "Private",
+      "photo_url": "https://placehold.co/600x400/1a1a1a/ffffff?text=M235i+xDrive",
+      "created_at": "2023-02-10T12:00:00Z",
+      "updated_at": "2025-07-20T18:00:00Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "year": 2023,
+      "make": "Toyota",
+      "model": "GR86",
+      "trim": "Premium",
+      "nickname": "Weekend Warrior",
+      "status": "Active",
+      "visibility": "Public",
+      "photo_url": "https://placehold.co/600x400/1a1a1a/ffffff?text=GR86",
+      "created_at": "2023-03-05T12:00:00Z",
+      "updated_at": "2025-08-05T11:20:00Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "year": 1995,
+      "make": "Mazda",
+      "model": "Miata",
+      "trim": "NA",
+      "nickname": "The Project",
+      "status": "Project",
+      "visibility": "Private",
+      "photo_url": "https://placehold.co/600x400/1a1a1a/ffffff?text=Miata+NA",
+      "created_at": "2024-05-20T12:00:00Z",
+      "updated_at": "2024-05-20T12:00:00Z"
+    }
+  ],
+  "maintenance_logs": [
+    {
+      "id": 101,
+      "vehicle_id": 1,
+      "date_performed": "2025-07-20",
+      "mileage": 125100,
+      "title": "Oil and Filter Change",
+      "description": "Used Liqui Moly 5W-40 and a Mann filter.",
+      "cost": 87.50,
+      "category": "Engine"
+    },
+    {
+      "id": 102,
+      "vehicle_id": 1,
+      "date_performed": "2025-06-01",
+      "mileage": 124800,
+      "title": "Brake Pad & Rotor Replacement",
+      "description": "Replaced front pads and rotors with Hawk HPS pads and Brembo blank rotors. Bedded in per instructions.",
+      "cost": 450.00,
+      "category": "Brakes"
+    },
+    {
+      "id": 103,
+      "vehicle_id": 2,
+      "date_performed": "2025-07-20",
+      "mileage": 86250,
+      "title": "Annual Service",
+      "description": "Scheduled maintenance including oil change, cabin air filter, and inspection.",
+      "cost": 450.00,
+      "category": "General"
+    },
+    {
+      "id": 104,
+      "vehicle_id": 3,
+      "date_performed": "2025-08-01",
+      "mileage": 8500,
+      "title": "First Oil Change",
+      "description": "Post break-in period oil change with OEM filter and Motul 0W-20.",
+      "cost": 65.00,
+      "category": "Engine"
+    },
+    {
+      "id": 105,
+      "vehicle_id": 1,
+      "date_performed": "2025-08-01",
+      "mileage": 125300,
+      "title": "Coolant Flush",
+      "description": "Drained, flushed, and refilled cooling system with BMW blue coolant.",
+      "cost": 120.00,
+      "category": "Engine"
+    },
+    {
+      "id": 106,
+      "vehicle_id": 2,
+      "date_performed": "2025-03-10",
+      "mileage": 82100,
+      "title": "New Tires",
+      "description": "Replaced all four tires with Michelin Pilot Sport 4S. Included mounting and balancing.",
+      "cost": 1150.00,
+      "category": "Wheels & Tires"
+    },
+    {
+      "id": 107,
+      "vehicle_id": 3,
+      "date_performed": "2025-08-05",
+      "mileage": 8650,
+      "title": "Transmission Fluid Change",
+      "description": "Changed manual transmission fluid with Motul Gear 300.",
+      "cost": 95.00,
+      "category": "Drivetrain"
+    },
+    {
+      "id": 108,
+      "vehicle_id": 4,
+      "date_performed": "2024-06-15",
+      "mileage": 150000,
+      "title": "Engine Teardown",
+      "description": "Began engine removal and teardown for full rebuild. No cost associated yet.",
+      "cost": 0,
+      "category": "Engine"
+    }
+  ],
+  "build_items": [
+    {
+      "id": 201,
+      "vehicle_id": 1,
+      "part_name": "TC Kline SA Coilovers",
+      "part_brand": "TC Kline",
+      "category": "Suspension",
+      "status": "Installed",
+      "cost": 2200.00,
+      "date_added": "2024-01-10T12:00:00Z"
+    },
+    {
+      "id": 202,
+      "vehicle_id": 1,
+      "part_name": "Dinan Cold Air Intake",
+      "part_brand": "Dinan",
+      "category": "Engine",
+      "status": "Purchased",
+      "cost": 450.00,
+      "date_added": "2025-01-15T14:30:00Z"
+    },
+    {
+      "id": 203,
+      "vehicle_id": 2,
+      "part_name": "JB4 Tuner",
+      "part_brand": "Burger Motorsports",
+      "category": "Engine",
+      "status": "Planned",
+      "cost": 520.00,
+      "date_added": "2025-02-01T09:15:00Z"
+    },
+    {
+      "id": 204,
+      "vehicle_id": 3,
+      "part_name": "Borla ATAK Exhaust",
+      "part_brand": "Borla",
+      "category": "Exhaust",
+      "status": "Installed",
+      "cost": 1200.00,
+      "date_added": "2023-02-01T16:45:00Z"
+    },
+    {
+      "id": 205,
+      "vehicle_id": 1,
+      "part_name": "Apex ARC-8 Wheels",
+      "part_brand": "Apex",
+      "category": "Wheels & Tires",
+      "status": "Planned",
+      "cost": 1400.00,
+      "date_added": "2025-03-01T10:00:00Z"
+    },
+    {
+      "id": 206,
+      "vehicle_id": 3,
+      "part_name": "Ohlins Road & Track Coilovers",
+      "part_brand": "Ohlins",
+      "category": "Suspension",
+      "status": "Purchased",
+      "cost": 2800.00,
+      "date_added": "2025-06-10T11:00:00Z"
+    },
+    {
+      "id": 207,
+      "vehicle_id": 4,
+      "part_name": "Forged Connecting Rods",
+      "part_brand": "Manley",
+      "category": "Engine",
+      "status": "Purchased",
+      "cost": 600.00,
+      "date_added": "2024-07-01T12:00:00Z"
+    },
+    {
+      "id": 208,
+      "vehicle_id": 4,
+      "part_name": "Garrett G25-550 Turbo",
+      "part_brand": "Garrett",
+      "category": "Engine",
+      "status": "Planned",
+      "cost": 2100.00,
+      "date_added": "2024-07-02T12:00:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "user_login": "rory_teehan",
+      "user_pass": "$P$B...",
+      "user_nicename": "rory-teehan",
+      "user_email": "rory.teehan@example.com",
+      "display_name": "Rory Teehan"
+    }
+  ],
+  "myddpc_saved_items": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "item_type": "vehicle_spec",
+      "item_title": "2024 BMW M3 Competition",
+      "item_data": "{\"year\": 2024, \"make\": \"BMW\", \"model\": \"M3\", \"trim\": \"Competition\"}",
+      "created_at": "2025-07-01T12:00:00Z"
+    }
+  ]
+}

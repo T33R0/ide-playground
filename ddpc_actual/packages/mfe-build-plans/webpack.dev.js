@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const devConfig = {
   mode: "development",
   devServer: {
-    port: 3005,
+    port: 3007,
     historyApiFallback: true,
     hot: true,
     headers: {
@@ -15,7 +15,7 @@ const devConfig = {
     },
   },
   output: {
-    publicPath: "http://localhost:3005/",
+    publicPath: "http://localhost:3007/",
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -31,6 +31,7 @@ const devConfig = {
         ...deps,
         react: { singleton: true, requiredVersion: deps.react },
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
+        "shared-config": { singleton: true, eager: true },
       },
     }),
     new HtmlWebpackPlugin({

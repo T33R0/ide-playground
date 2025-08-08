@@ -2,19 +2,27 @@ const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common.js");
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps = require("./package.json").dependencies;
+const webpack = require("webpack");
 
 const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
-    publicPath: "https://app.myddpc.com/mfe-template/",
+    publicPath: "https://app.myddpc.com/mfe-dashboard/",
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.REACT_APP_API_URL': JSON.stringify('https://api.myddpc.com')
+    }),
     new ModuleFederationPlugin({
-      name: "mfe_template",
+      name: "mfe_dashboard",
       filename: "remoteEntry.js",
       exposes: {
-        "./TemplateApp": "./src/App",
+        "./DashboardApp": "./src/App",
+      },
+      remotes: {
+        "shared-ui": "mf-shared-ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
       },
       shared: {
         ...deps,
@@ -25,4 +33,4 @@ const prodConfig = {
   ],
 };
 
-module.exports = merge(commonConfig, prodConfig); 
+module.exports = merge(commonConfig, prodConfig);
