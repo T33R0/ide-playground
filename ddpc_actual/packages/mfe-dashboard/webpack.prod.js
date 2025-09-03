@@ -22,7 +22,8 @@ const prodConfig = {
         "./DashboardApp": "./src/App",
       },
       remotes: {
-        "shared-ui": "mf-shared-ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+        // Align remote alias with imports like `shared_ui/button`
+        shared_ui: "mf_shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
       },
       shared: {
         ...deps,

@@ -17,7 +17,7 @@ const prodConfig = {
         "./HomeApp": "./src/App",
       },
       remotes: {
-        "shared-ui": "mf-shared-ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+        shared_ui: "mf_shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
       },
       shared: {
         ...deps,

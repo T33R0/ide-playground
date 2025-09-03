@@ -19,7 +19,9 @@
     "start:api": "json-server --watch db.json --routes routes.json --port 8001 --host 127.0.0.1",
     "build:mfe-build-plans": "npm run build --prefix packages/mfe-build-plans",
     "build": "npm run build --workspaces --if-present",
-    "clean": "rimraf --glob packages/*/node_modules packages/*/dist packages/*/package-lock.json host/node_modules host/dist host/package-lock.json node_modules package-lock.json"
+    "clean": "rimraf --glob packages/*/node_modules packages/*/dist packages/*/package-lock.json host/node_modules host/dist host/package-lock.json node_modules package-lock.json",
+    "test:smoke": "node --test tests/smoke/*.test.js",
+    "test:e2e": "node --test tests/e2e/*.test.js"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",

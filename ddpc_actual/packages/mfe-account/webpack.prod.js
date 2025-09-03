@@ -14,7 +14,7 @@ const prodConfig = {
       name: "mfe_account",
       filename: "remoteEntry.js",
       remotes: {
-        shared_ui: "shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+        shared_ui: "mf_shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
       },
       exposes: {
         "./AccountApp": "./src/App",
