@@ -1,8 +1,13 @@
 import React from 'react';
 import { Check, Star } from 'lucide-react';
 import { Button } from 'shared_ui/button';
+import { useAuth } from '../contexts/AuthContext';
 
 const PricingPageNew = () => {
+  const { isAuthenticated } = useAuth();
+  const apiUrl = process.env.REACT_APP_API_URL || '';
+  const builderPriceId = process.env.REACT_APP_STRIPE_PRICE_ID_BUILDER || '';
+  const proPriceId = process.env.REACT_APP_STRIPE_PRICE_ID_PRO || '';
   const containerStyle: React.CSSProperties = {
     minHeight: '100vh',
     padding: '3rem 1rem 2rem'
@@ -80,6 +85,22 @@ const PricingPageNew = () => {
     marginTop: 'auto'
   };
 
+  const handleCheckout = async (priceId: string) => {
+    try {
+      const response = await fetch(`${apiUrl}/create-checkout-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId }),
+      });
+      const data = await response.json();
+      if (data?.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+    }
+  };
+
   return (
     <div style={containerStyle}>
       {/* Header */}
@@ -130,12 +151,16 @@ const PricingPageNew = () => {
             ))}
           </ul>
           
-          <button style={{ ...buttonStyle, backgroundColor: '#3b82f6', color: '#ffffff' }}
-                  onClick={() => window.location.href = '/register'}
-                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}>
-            Get Started
-          </button>
+          {!isAuthenticated && (
+            <button
+              style={{ ...buttonStyle, backgroundColor: '#3b82f6', color: '#ffffff' }}
+              onClick={() => (window.location.href = '/register')}
+              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#3b82f6')}
+            >
+              Get Started
+            </button>
+          )}
         </div>
 
         {/* Builder Card */}
@@ -170,10 +195,12 @@ const PricingPageNew = () => {
             ))}
           </ul>
           
-          <button style={{ ...buttonStyle, backgroundColor: '#ea580c', color: '#ffffff', boxShadow: '0 4px 12px rgba(234,88,12,0.3)' }}
-                  onClick={() => window.location.href = '/register'}
-                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#dc2626'}
-                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ea580c'}>
+          <button
+            style={{ ...buttonStyle, backgroundColor: '#ea580c', color: '#ffffff', boxShadow: '0 4px 12px rgba(234,88,12,0.3)' }}
+            onClick={() => handleCheckout(builderPriceId)}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#dc2626')}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#ea580c')}
+          >
             Start Your Build
           </button>
         </div>
@@ -206,10 +233,12 @@ const PricingPageNew = () => {
             ))}
           </ul>
           
-          <button style={{ ...buttonStyle, backgroundColor: '#475569', color: '#ffffff', border: '1px solid #64748b' }}
-                  onClick={() => window.location.href = '/register'}
-                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#334155'}
-                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#475569'}>
+          <button
+            style={{ ...buttonStyle, backgroundColor: '#475569', color: '#ffffff', border: '1px solid #64748b' }}
+            onClick={() => handleCheckout(proPriceId)}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#334155')}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#475569')}
+          >
             Go Pro
           </button>
         </div>

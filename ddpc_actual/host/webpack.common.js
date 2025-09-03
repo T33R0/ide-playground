@@ -34,6 +34,9 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:8001'),
       'process.env.REACT_APP_WP_API_URL': JSON.stringify(process.env.REACT_APP_WP_API_URL || 'https://myddpc.com/wp-json'),
+      'process.env.REACT_APP_STRIPE_PUBLIC_KEY': JSON.stringify(process.env.REACT_APP_STRIPE_PUBLIC_KEY || ''),
+      'process.env.REACT_APP_STRIPE_PRICE_ID_BUILDER': JSON.stringify(process.env.REACT_APP_STRIPE_PRICE_ID_BUILDER || ''),
+      'process.env.REACT_APP_STRIPE_PRICE_ID_PRO': JSON.stringify(process.env.REACT_APP_STRIPE_PRICE_ID_PRO || ''),
     }),
   ],
-}; 
+};
