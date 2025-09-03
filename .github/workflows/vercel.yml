@@ -9,9 +9,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ddpc_actual
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -20,6 +17,7 @@ jobs:
           cache: npm
           cache-dependency-path: ddpc_actual/package-lock.json
       - name: Install dependencies
+        working-directory: ddpc_actual
         run: npm ci
       - name: Pull Vercel environment info
         working-directory: ddpc_actual/host
