@@ -11,7 +11,9 @@ const prodConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "mf-shared-ui",
+      // Library name cannot contain dashes when using the default 'var' type
+      // Use an underscore so other remotes can consume it as `mf_shared_ui`
+      name: "mf_shared_ui",
       filename: "remoteEntry.js",
       exposes: {
         "./button": "./src/components/ui/button",

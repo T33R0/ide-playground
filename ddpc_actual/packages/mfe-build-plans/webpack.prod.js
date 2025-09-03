@@ -17,7 +17,8 @@ const prodConfig = {
         "./BuildPlansApp": "./src/App",
       },
       remotes: {
-        "shared-ui": "mf-shared-ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+        // Consume shared-ui via module federation using underscore notation
+        shared_ui: "mf_shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
       },
       shared: {
         ...deps,

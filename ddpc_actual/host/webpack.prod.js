@@ -20,7 +20,8 @@ const prodConfig = {
       remotes: {
         mfe_home: "mfe_home@https://app.myddpc.com/mfe-home/remoteEntry.js",
         mfe_garage: "mfe_garage@https://app.myddpc.com/mfe-garage/remoteEntry.js",
-        shared_ui: "shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
+        // Adjust shared-ui remote name to match library identifier
+        shared_ui: "mf_shared_ui@https://app.myddpc.com/shared-ui/remoteEntry.js",
         mfe_build_plans: "mfe_build_plans@https://app.myddpc.com/mfe-build-plans/remoteEntry.js",
         mfe_maintenance: "mfe_maintenance@https://app.myddpc.com/mfe-maintenance/remoteEntry.js",
         mfe_dashboard: "mfe_dashboard@https://app.myddpc.com/mfe-dashboard/remoteEntry.js",
