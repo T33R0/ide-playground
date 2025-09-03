@@ -22,22 +22,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Pull Vercel environment info
-        working-directory: host
-        run: vercel pull --yes --environment=${{ github.event_name == 'push' && 'production' || 'preview' }}
+        working-directory: ddpc_actual/host
+        run: npx vercel pull --yes --environment=${{ github.event_name == 'push' && 'production' || 'preview' }}
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       - name: Build project artifacts
-        working-directory: host
-        run: vercel build
+        working-directory: ddpc_actual/host
+        run: npx vercel build
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       - name: Deploy to Vercel
-        working-directory: host
-        run: vercel deploy --prebuilt
+        working-directory: ddpc_actual/host
+        run: npx vercel deploy --prebuilt
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
